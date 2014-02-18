@@ -6,6 +6,9 @@ net = require 'net'
 class Process extends EventEmitter
   constructor: (@name, @command, options = {}) ->
     @cwd = options.cwd
+    @addListener "error", (err, xx) ->
+      console.log "caught an error from emitter: " + err + " " + xx
+      return
 
   spawn: ->
     env = {}
